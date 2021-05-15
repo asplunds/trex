@@ -1,0 +1,15 @@
+{
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      "dist/*",
+      "node_modules/**/node_modules"
+    ],
+    "execMap": {
+      "js": "node"
+    },
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "ext": "js,html"
+  }

@@ -1,0 +1,239 @@
+<html><head></head><body>
+
+
+
+<trex __trex_module="true" __trex_component_name="App" id="__7508820999860764"></trex>
+hello
+
+<div id="__7527710999846458">
+        <h1 id="__7528402999639511">
+            hey<trex-interpolation local-expression="__7474611999988556_local_expression" class="__dep_y"><textarea hidden=""> y </textarea></trex-interpolation>
+            lol
+            hey<trex-interpolation local-expression="__7482741000056267_local_expression" class="__dep_y"><textarea hidden=""> y </textarea></trex-interpolation>
+        </h1>
+    </div>
+<div id="__7564955999851227">
+        <h1 id="__7565455999970436">
+            hey<trex-interpolation local-expression="__7474611999988556_local_expression" class="__dep_y"><textarea hidden=""> y </textarea></trex-interpolation>
+            lol
+            hey<trex-interpolation local-expression="__7482741000056267_local_expression" class="__dep_y"><textarea hidden=""> y </textarea></trex-interpolation>
+        </h1>
+    </div>
+        <script>
+            var constants = {"trexModuleName":"trex","frameId":"__trex_frame_","trexComponentAttributeKey":"__trex_component_name","trexComponentDirectChild":"trex-c-dc","trexIndependentExpressionName":"independent_"};
+
+            function TrexState(superContext) {
+    this.superContext = superContext;
+
+    this.reflect = reflect
+}
+
+function reflect(dependency, dom, ctx, externalDom = document) {
+    var dependents = dom.querySelectorAll("trex-interpolation.__dep_" + dependency + "");
+    var length = dependents.length;
+
+    for (var i = 0; i < length; i++) {
+        var dependant = dependents[i];
+        /* var directChild = null; */
+        var parent = dependant.parentNode;
+        var nodeIndex = Array.prototype.indexOf.call(parent.childNodes, dependant);
+
+        
+
+        /* if (dependant.hasAttribute("direct-child-cached-id")) {
+            directChild = externalDom.getElementById(dependant.getAttribute("direct-child-cached-id"));
+        }
+        else {
+            var directChildId = dependant.closest("." + constants.trexComponentDirectChild).getAttribute("trex-dc-id");
+            var externalDirectChildren = externalDom.getElementsByClassName(directChildId);
+            var externalId = null;
+        
+            for (var i = 0; i < externalDirectChildren.length; i++) {
+                var child = externalDirectChildren[i];
+                var id = child.id;
+                if (refIds.indexOf(id) > -1) {
+                    externalId = id;
+                    break;
+                }
+            }
+            if (externalId) {
+                dependant.setAttribute("direct-child-cached-id", externalId);
+                directChild = externalDom.getElementById(externalId);
+            }
+        } */
+
+        var children = externalDom.getElementById(parent.id).childNodes;
+        var specificChild = children[nodeIndex];
+        var specificChildParent = specificChild.parentNode;
+
+        resolveInterpolation(dependant, ctx, function(toAppend) {
+            if (specificChild && specificChild !== toAppend) {
+                specificChildParent.replaceChild(toAppend, specificChild);
+            }
+            else if (!specificChild) {
+                specificChildParent.appendChild(toAppend); // should not really be called...
+            }
+        });
+    
+    }
+
+    return true;
+
+}
+function resolveInterpolation(dependant, ctx, cb) {
+
+    var value = ctx[dependant.getAttribute("local-expression")]();
+
+    if (value.constructor.prototype.toString() === "[object Promise]") {
+        return value.then(function(data) {
+            return data;
+        }).catch(function(error) {
+            return error;
+        }).then(function(data) {
+            cb(document.createTextNode(resolveInterpolationValue(data)));
+        })
+    } else {
+        return cb(document.createTextNode(resolveInterpolationValue(value)));
+    }
+    
+}
+
+function resolveInterpolationValue(value) {
+
+    if (!value && value !== 0) {
+        return "";
+    } else if (~value.constructor.toString().indexOf("function Array()")) {
+        return value.join("");
+    }
+
+    return value;
+
+}
+
+var trexParser = new DOMParser();
+        </script>
+    
+
+    <script trex-component="true">
+        /*
+            COMPONENT NAME:  App
+            CACHED:          ?
+            REFERENCES #:    4
+        */
+        
+
+        function __7313280000090599_App (domString) {
+            var __trex_state = new TrexState(this);
+            this.state = __trex_state;
+            var dom = trexParser.parseFromString(domString, "text/html");
+            domString = null; //gc help
+
+            /* Reactive state */
+            Object.defineProperty.call(this, __trex_state, "x", {
+                get() { return this["__x__"]; },
+                set(v) { return function() {
+                    var result = this["__x__"] = v;
+                    var ctx = this;
+                    window.requestAnimationFrame(function() {
+                        this.reflect("x", dom, ctx.superContext);
+                    });
+                    return result;
+                }.call(this) },
+            });Object.defineProperty.call(this, __trex_state, "y", {
+                get() { return this["__y__"]; },
+                set(v) { return function() {
+                    var result = this["__y__"] = v;
+                    var ctx = this;
+                    window.requestAnimationFrame(function() {
+                        this.reflect("y", dom, ctx.superContext);
+                    });
+                    return result;
+                }.call(this) },
+            });Object.defineProperty.call(this, __trex_state, "independent_", {
+                get() { return this["__independent___"]; },
+                set(v) { return function() {
+                    var result = this["__independent___"] = v;
+                    var ctx = this;
+                    window.requestAnimationFrame(function() {
+                        this.reflect("independent_", dom, ctx.superContext);
+                    });
+                    return result;
+                }.call(this) },
+            });
+            __trex_state["independent_"] = undefined;
+
+            /* Component code */
+            _:
+    __trex_state["x"] = 1;
+_:
+    __trex_state["y"] = 1;
+
+            /* Local expressions */
+            this.__7474611999988556_local_expression = function() { return __trex_state["y"]; };
+this.__7482741000056267_local_expression = function() { return __trex_state["y"]; };
+
+            return this;
+        }
+
+            
+            !function() {
+                var me = new __7313280000090599_App("<div id=\"__7468266999721527\">\n        <h1 id=\"__7470076999664307\">\n            hey<trex-interpolation local-expression=\"__7474611999988556_local_expression\" class=\"__dep_y\"></trex-interpolation>\n            lol\n            hey<trex-interpolation local-expression=\"__7482741000056267_local_expression\" class=\"__dep_y\"></trex-interpolation>\n        </h1>\n    </div>");
+            }();
+
+            !function() {
+                var me = new __7313280000090599_App("<div id=\"__7527710999846458\">\n        <h1 id=\"__7528402999639511\">\n            hey<trex-interpolation local-expression=\"__7474611999988556_local_expression\" class=\"__dep_y\"><textarea hidden=\"\"> y </textarea></trex-interpolation>\n            lol\n            hey<trex-interpolation local-expression=\"__7482741000056267_local_expression\" class=\"__dep_y\"><textarea hidden=\"\"> y </textarea></trex-interpolation>\n        </h1>\n    </div>");
+            }();
+
+            !function() {
+                var me = new __7313280000090599_App("<div id=\"__7564955999851227\">\n        <h1 id=\"__7565455999970436\">\n            hey<trex-interpolation local-expression=\"__7474611999988556_local_expression\" class=\"__dep_y\"><textarea hidden=\"\"> y </textarea></trex-interpolation>\n            lol\n            hey<trex-interpolation local-expression=\"__7482741000056267_local_expression\" class=\"__dep_y\"><textarea hidden=\"\"> y </textarea></trex-interpolation>\n        </h1>\n    </div>");
+            }();
+
+            !function() {
+                var me = new __7313280000090599_App("<div id=\"__7592742999792099\">\n        <h1 id=\"__7594068999886513\">\n            hey<trex-interpolation local-expression=\"__7474611999988556_local_expression\" class=\"__dep_y\"><textarea hidden=\"\"> y </textarea></trex-interpolation>\n            lol\n            hey<trex-interpolation local-expression=\"__7482741000056267_local_expression\" class=\"__dep_y\"><textarea hidden=\"\"> y </textarea></trex-interpolation>\n        </h1>\n    </div>");
+            }();
+    </script>
+    
+
+    <script trex-component="true">
+        /*
+            COMPONENT NAME:  App2
+            CACHED:          ?
+            REFERENCES #:    1
+        */
+        
+
+        function __7417462999820709_App2 (domString) {
+            var __trex_state = new TrexState(this);
+            this.state = __trex_state;
+            var dom = trexParser.parseFromString(domString, "text/html");
+            domString = null; //gc help
+
+            /* Reactive state */
+            Object.defineProperty.call(this, __trex_state, "independent_", {
+                get() { return this["__independent___"]; },
+                set(v) { return function() {
+                    var result = this["__independent___"] = v;
+                    var ctx = this;
+                    window.requestAnimationFrame(function() {
+                        this.reflect("independent_", dom, ctx.superContext);
+                    });
+                    return result;
+                }.call(this) },
+            });
+            __trex_state["independent_"] = undefined;
+
+            /* Component code */
+            const a = '';
+
+            /* Local expressions */
+            
+
+            return this;
+        }
+
+            
+            !function() {
+                var me = new __7417462999820709_App2("<trex __trex_module=\"true\" __trex_component_name=\"App\" id=\"__7508820999860764\"></trex>");
+            }();
+    </script>
+    </body></html>
