@@ -61,13 +61,14 @@ function resolveInterpolation(dependant, ctx, cb) {
     var value = ctx[dependant.getAttribute("local-expression")]();
 
     if (value.constructor.prototype.toString() === "[object Promise]") {
-        return value.then(function(data) {
-            return data;
-        }).catch(function(error) {
-            return error;
-        }).then(function(data) {
-            cb(document.createTextNode(resolveInterpolationValue(data)));
-        })
+        return value
+            .then(function(data) {
+                return data;
+            }).catch(function(error) {
+                return error;
+            }).then(function(data) {
+                cb(document.createTextNode(resolveInterpolationValue(data)));
+            });
     } else {
         return cb(document.createTextNode(resolveInterpolationValue(value)));
     }
